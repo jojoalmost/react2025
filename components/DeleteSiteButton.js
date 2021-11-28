@@ -54,6 +54,7 @@ const DeleteSitebutton = ({ siteId }) => {
           </AlertDialogHeader>
           <AlertDialogBody>
             Are you sure? This will also delete all feedback left on the site.
+            {/* eslint-disable-next-line react/no-unescaped-entities */}
             You can't undo this action afterwards.
           </AlertDialogBody>
           <AlertDialogFooter>
