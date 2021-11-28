@@ -12,9 +12,10 @@ const FeedbackEmptyState = () => (
     direction="column"
   >
     <Heading size="lg" mb={2}>
-      You haven’t left any feedback.
+      {/* eslint-disable-next-line react/no-unescaped-entities */}
+      There isn't any feedback.
     </Heading>
-    <Text mb={4}>Spread the love!</Text>
+    <Text mb={4}>Share your site!</Text>
   </Flex>
 );
 
