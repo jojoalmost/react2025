@@ -15,7 +15,7 @@ const FeedbackEmptyState = () => (
       {/* eslint-disable-next-line react/no-unescaped-entities */}
       There isn't any feedback.
     </Heading>
-    <Text mb={4}>Share your site!</Text>
+    <Text mb={4}>Share your sites!</Text>
   </Flex>
 );
 
