@@ -1,37 +1,42 @@
 import { useForm } from 'react-hook-form';
 import { mutate } from 'swr';
 import {
-    Modal,
-    ModalOverlay,
-    ModalContent,
-    ModalHeader,
-    ModalFooter,
-    ModalBody,
-    ModalCloseButton,
-    FormControl,
-    FormLabel,
-    Button,
-    Input,
-    useToast,
-    useDisclosure
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  FormControl,
+  FormLabel,
+  Button,
+  Input,
+  useToast,
+  useDisclosure
 } from '@chakra-ui/core';
 
 import { createSite } from '@/lib/db';
 import { useAuth } from '@/lib/auth';
 
 const AddSiteModal = ({ children }) => {
-    const toast = useToast();
-    const auth = useAuth();
-    const { isOpen, onOpen, onClose } = useDisclosure();
-    const { handleSubmit, register } = useForm();
+  const toast = useToast();
+  const auth = useAuth();
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { handleSubmit, register } = useForm();
 
-    const onCreateSite = ({ name, url }) => {
-        const newSite = {
-            authorId: auth.user.uid,
-            createdAt: new Date().toISOString(),
-            name,
-            url
-        };
+  const onCreateSite = ({ name, url }) => {
+    const newSite = {
+      authorId: auth.user.uid,
+      createdAt: new Date().toISOString(),
+      name,
+      url,
+      settings: {
+        icons: true,
+        timestamp: true,
+        ratings: false
+      }
+    };
 
     const { id } = createSite(newSite);
     toast({
@@ -54,6 +59,7 @@ const AddSiteModal = ({ children }) => {
   return (
     <>
       <Button
+        id="add-site-modal-button"
         onClick={onOpen}
         backgroundColor="gray.900"
         color="white"
@@ -75,6 +81,7 @@ const AddSiteModal = ({ children }) => {
             <FormControl>
               <FormLabel>Name</FormLabel>
               <Input
+                id="site-input"
                 placeholder="My site"
                 name="name"
                 ref={register({
@@ -86,6 +93,7 @@ const AddSiteModal = ({ children }) => {
             <FormControl mt={4}>
               <FormLabel>Link</FormLabel>
               <Input
+                id="link-input"
                 placeholder="https://website.com"
                 name="url"
                 ref={register({
@@ -100,6 +108,7 @@ const AddSiteModal = ({ children }) => {
               Cancel
             </Button>
             <Button
+              id="create-site-button"
               backgroundColor="#99FFFE"
               color="#194D4C"
               fontWeight="medium"
