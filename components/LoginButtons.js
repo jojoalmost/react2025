@@ -1,4 +1,4 @@
-import { Button, Stack } from '@chakra-ui/core';
+import { Button, Flex } from '@chakra-ui/core';
 
 import { useAuth } from '@/lib/auth';
 
@@ -6,7 +6,7 @@ const LoginButtons = () => {
   const auth = useAuth();
 
   return (
-    <Stack isInline>
+    <Flex direction={['column', 'row']}>
       <Button
         onClick={() => auth.signinWithGitHub()}
         backgroundColor="gray.900"
@@ -14,13 +14,14 @@ const LoginButtons = () => {
         fontWeight="medium"
         leftIcon="github"
         mt={4}
+        mr={2}
         _hover={{ bg: 'gray.700' }}
         _active={{
           bg: 'gray.800',
           transform: 'scale(0.95)'
         }}
       >
-        Sign In with GitHub
+        Continue with GitHub
       </Button>
       <Button
         onClick={() => auth.signinWithGoogle()}
@@ -36,9 +37,9 @@ const LoginButtons = () => {
           transform: 'scale(0.95)'
         }}
       >
-        Sign In with Google
+        Continue with Google
       </Button>
-    </Stack>
+    </Flex>
   );
 };
 
