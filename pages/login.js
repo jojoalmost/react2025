@@ -19,7 +19,7 @@ import Page from '@/components/Page';
 const Login = () => {
     const toast = useToast();
     const [loading, setLoading] = useState(false);
-    const { signinWithEmail } = useAuth();
+    const { signinWithEmail, auth } = useAuth();
     const { handleSubmit, register, errors } = useForm();
 
     const onLogin = ({ email, pass }) => {
@@ -105,6 +105,39 @@ const Login = () => {
                     }}
                 >
                     Login
+                </Button>
+                <Button
+                    onClick={() => auth.signinWithGitHub('/sites')}
+                    backgroundColor="gray.900"
+                    color="white"
+                    fontWeight="medium"
+                    leftIcon="github"
+                    mt={2}
+                    h="50px"
+                    _hover={{ bg: 'gray.700' }}
+                    _active={{
+                        bg: 'gray.800',
+                        transform: 'scale(0.95)'
+                    }}
+                >
+                    Continue with GitHub
+                </Button>
+                <Button
+                    onClick={() => auth.signinWithGoogle('/sites')}
+                    backgroundColor="white"
+                    color="gray.900"
+                    variant="outline"
+                    fontWeight="medium"
+                    leftIcon="google"
+                    mt={2}
+                    h="50px"
+                    _hover={{ bg: 'gray.100' }}
+                    _active={{
+                        bg: 'gray.100',
+                        transform: 'scale(0.95)'
+                    }}
+                >
+                    Continue with Google
                 </Button>
             </Stack>
         </Flex>
